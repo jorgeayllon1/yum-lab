@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  main:
+    image: yum_recup:latest
+    container_name: yum_recup
+    hostname: yum-recup
+    build:
+      dockerfile: ./Dockerfile.yum.yml
+      context: .
+    volumes:
+      - type: bind
+        source: /mnt/yum_packages
+        target: /home/linus/yum_packages

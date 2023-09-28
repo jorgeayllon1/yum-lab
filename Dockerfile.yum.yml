@@ -1,4 +1,4 @@
-FROM centos:7.2.1511
+FROM almalinux:9.2
 
 LABEL maintener="jorge@mail.fr"
 ARG TIMEZONE=Europe/Paris
@@ -12,8 +12,9 @@ RUN useradd -G wheel -s /bin/bash linus && \
     chown -R linus:linus /home/linus/ && \
     rm -rf /etc/localtime && ln -sf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} > /etc/timezone
 
-COPY centos-all.repo /etc/yum.repo.d/
+COPY . /etc/yum.repo.d/
 
 USER linus
+WORKDIR /home/linus
 
 ENTRYPOINT [ "tail","-f","/dev/null" ]
