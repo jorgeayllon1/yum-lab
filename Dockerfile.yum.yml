@@ -1,20 +1,20 @@
-FROM almalinux:9.2
+FROM centos:7.2.1511
 
 LABEL maintener="jorge@mail.fr"
 ARG TIMEZONE=Europe/Paris
 
 RUN yum -y update
-RUN yum clean all && rm -rf /etc/yum.repo.d/*
+RUN yum clean all && rm -rf /etc/yum.repos.d/*
 
-RUN useradd -G wheel -s /bin/bash linus && \
-    echo 'linus:password' | chpasswd && \
-    echo 'alias ll="ls --group-directories-first -phAl --color=auto"' >> /home/linus/.bashrc && \
-    chown -R linus:linus /home/linus/ && \
-    rm -rf /etc/localtime && ln -sf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} > /etc/timezone
+# RUN useradd -G wheel -s /bin/bash linus && \
+#     echo 'linus:password' | chpasswd && \
+#     echo 'alias ll="ls --group-directories-first -phAl --color=auto"' >> /home/linus/.bashrc && \
+#     chown -R linus:linus /home/linus/ && \
+#     rm -rf /etc/localtime && ln -sf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} > /etc/timezone
 
-COPY . /etc/yum.repo.d/
+# COPY . /etc/yum.repos.d/
 
-USER linus
-WORKDIR /home/linus
+# USER linus
+# WORKDIR /home/linus
 
-ENTRYPOINT [ "tail","-f","/dev/null" ]
+# ENTRYPOINT [ "tail","-f","/dev/null" ]

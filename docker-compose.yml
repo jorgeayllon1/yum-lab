@@ -11,4 +11,4 @@ services:
     volumes:
       - type: bind
         source: /mnt/yum_packages
-        target: /home/linus/yum_packages
+        target: /home/linus/code
