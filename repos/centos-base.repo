@@ -1,7 +1,6 @@
 [base]
 name=CentOS-$releasever - Base
-mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os&infra=$infra
-#baseurl=http://mirror.centos.org/centos/$releasever/os/$basearch/
+baseurl=http://mirror.centos.org/centos/$releasever/os/$basearch/
 gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 exclude= *7_3* *7_4* *7_5* *7_6* *7_7* *7_8* *7_9*
@@ -9,8 +8,7 @@ exclude= *7_3* *7_4* *7_5* *7_6* *7_7* *7_8* *7_9*
 #released updates 
 [updates]
 name=CentOS-$releasever - Updates
-mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates&infra=$infra
-#baseurl=http://mirror.centos.org/centos/$releasever/updates/$basearch/
+baseurl=http://mirror.centos.org/centos/$releasever/updates/$basearch/
 gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 exclude= *7_3* *7_4* *7_5* *7_6* *7_7* *7_8* *7_9*
@@ -18,8 +16,7 @@ exclude= *7_3* *7_4* *7_5* *7_6* *7_7* *7_8* *7_9*
 #additional packages that may be useful
 [extras]
 name=CentOS-$releasever - Extras
-mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=extras&infra=$infra
-#baseurl=http://mirror.centos.org/centos/$releasever/extras/$basearch/
+baseurl=http://mirror.centos.org/centos/$releasever/extras/$basearch/
 gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 exclude= *7_3* *7_4* *7_5* *7_6* *7_7* *7_8* *7_9*

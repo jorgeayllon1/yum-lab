@@ -3,8 +3,11 @@ FROM centos:7.2.1511
 LABEL maintener="jorge@mail.fr"
 ARG TIMEZONE=Europe/Paris
 
-RUN yum -y update
 RUN yum clean all && rm -rf /etc/yum.repos.d/*
+COPY repos/* /etc/yum.repos.d/
+COPY . /tmp
+RUN yum makecache fast
+# RUN yum makecache fast && yum -y update
 
 # RUN useradd -G wheel -s /bin/bash linus && \
 #     echo 'linus:password' | chpasswd && \
@@ -12,7 +15,6 @@ RUN yum clean all && rm -rf /etc/yum.repos.d/*
 #     chown -R linus:linus /home/linus/ && \
 #     rm -rf /etc/localtime && ln -sf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} > /etc/timezone
 
-# COPY . /etc/yum.repos.d/
 
 # USER linus
 # WORKDIR /home/linus
