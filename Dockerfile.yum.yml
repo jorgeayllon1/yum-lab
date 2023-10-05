@@ -5,18 +5,12 @@ ARG TIMEZONE=Europe/Paris
 
 RUN yum clean all && rm -rf /etc/yum.repos.d/*
 COPY repos/* /etc/yum.repos.d/
-COPY . /tmp
+COPY gpg-keys/* /etc/pki/rpm-gpg/
 RUN yum makecache fast
-# RUN yum makecache fast && yum -y update
 
-# RUN useradd -G wheel -s /bin/bash linus && \
-#     echo 'linus:password' | chpasswd && \
-#     echo 'alias ll="ls --group-directories-first -phAl --color=auto"' >> /home/linus/.bashrc && \
-#     chown -R linus:linus /home/linus/ && \
-#     rm -rf /etc/localtime && ln -sf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} > /etc/timezone
+RUN echo 'alias ll="ls --group-directories-first -phAl --color=auto"' >> /root/.bashrc && \
+    rm -rf /etc/localtime && ln -sf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} > /etc/timezone
 
+WORKDIR /
 
-# USER linus
-# WORKDIR /home/linus
-
-# ENTRYPOINT [ "tail","-f","/dev/null" ]
+ENTRYPOINT [ "tail","-f","/dev/null" ]

@@ -10,5 +10,5 @@ services:
       context: .
     volumes:
       - type: bind
-        source: /mnt/yum_packages
-        target: /home/linus/code
+        source: ./scripts
+        target: /code
