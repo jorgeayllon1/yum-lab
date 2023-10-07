@@ -4,6 +4,7 @@ LABEL maintener="jorge@mail.fr"
 ARG TIMEZONE=Europe/Paris
 
 RUN yum clean all && rm -rf /etc/yum.repos.d/*
+COPY yum.conf /etc/
 COPY repos/* /etc/yum.repos.d/
 COPY gpg-keys/* /etc/pki/rpm-gpg/
 RUN yum makecache fast
@@ -13,4 +14,4 @@ RUN echo 'alias ll="ls --group-directories-first -phAl --color=auto"' >> /root/.
 
 WORKDIR /
 
-ENTRYPOINT [ "tail","-f","/dev/null" ]
+ENTRYPOINT [ "sleep","infinity" ]

@@ -3,6 +3,4 @@ name=Extra Packages for Enterprise Linux 7 - $basearch
 baseurl=http://download.fedoraproject.org/pub/epel/7/$basearch
 failovermethod=priority
 enabled=1
-gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
-exclude= *7_3* *7_4* *7_5* *7_6* *7_7* *7_8* *7_9*
